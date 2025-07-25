@@ -1,0 +1,78 @@
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
+export default function HomePage() {
+  return (
+    <div className="bg-white text-gray-800">
+      <Header />
+
+      import Hero from '@/components/Hero';
+
+export default function Home() {
+  return (
+    <main>
+      <Hero />
+      {/* Add other components below */}
+    </main>
+  );
+}
+
+
+
+      {/* Filters Section */}
+      <section className="px-6 md:px-12 py-12 text-left">
+        <h3 className="text-2xl font-bold mb-4">🏷️ Discover by Category</h3>
+        <div className="flex flex-wrap gap-3 mb-8">
+          {['Self-contain', 'Mini-flat', 'Student-friendly', 'Lagos Only', '₦300k–₦600k'].map((tag) => (
+            <button
+              key={tag}
+              className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full hover:bg-blue-200 transition text-sm font-medium"
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg transition">
+              <img src={`https://source.unsplash.com/featured/?house,home,${i}`} alt="listing" className="rounded mb-4" />
+              <h4 className="text-lg font-semibold">Sample Home Title</h4>
+              <p className="text-sm text-gray-600">₦450k/year • Agent Verified</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Problem Section */}
+      <section className="px-6 md:px-12 py-12 bg-orange-50 text-left">
+        <h3 className="text-2xl font-bold mb-4">🚨 The Problem</h3>
+        <p className="mb-4">
+          Thousands of Nigerians are scammed every year by fake house agents demanding inspection fees for non-existent houses.
+        </p>
+        <p>Listings are often outdated, duplicated, or entirely fabricated to exploit desperate house seekers.</p>
+      </section>
+
+      {/* Solution Section */}
+      <section className="px-6 md:px-12 py-12 text-left">
+        <h3 className="text-2xl font-bold mb-4">✅ Our Solution</h3>
+        <ul className="list-disc pl-6 space-y-2 text-gray-700">
+          <li>Only verified landlords and agents can post properties.</li>
+          <li>Each listing is GPS-tagged, time-stamped, and expires after X days.</li>
+          <li>Users can report fraud, and agents receive trust scores.</li>
+        </ul>
+      </section>
+
+      {/* AI Features */}
+      <section className="px-6 md:px-12 py-12 bg-orange-50 text-left">
+        <h3 className="text-2xl font-bold mb-4">🤖 AI Features</h3>
+        <ul className="list-disc pl-6 space-y-2 text-gray-700">
+          <li><strong>Duplicate Listing Detection:</strong> Automatically flags reposts of the same house.</li>
+          <li><strong>Agent Trust Score:</strong> Uses reviews and complaints to rank agents.</li>
+        </ul>
+      </section>
+
+      <Footer />
+    </div>
+  );
+}
