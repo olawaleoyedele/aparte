@@ -138,7 +138,7 @@ export default function EmailStep({ onNext, onEmailVerified, onClose }) {
 
         {/* Terms */}
         <div className="text-center text-xs text-gray-500 mt-8">
-          <p>By creating an account you agree to Aparte's</p>
+          <p>By creating an account you agree to Aparte&apos;s</p>
           <div className="space-x-1">
             <a
               href="/terms"

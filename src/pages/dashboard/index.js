@@ -31,7 +31,7 @@ export default function DashboardHome({ email, name, role }) {
       Welcome back, <span className="capitalize">{role} {name}</span> 👋
     </h1>
     <p className="text-sm md:text-base text-white/90">
-      You're logged in as <span className="font-semibold">{email}</span>
+      You&apos;re logged in as <span className="font-semibold">{email}</span>
     </p>
   </div>
 

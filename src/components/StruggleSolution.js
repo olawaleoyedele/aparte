@@ -54,7 +54,7 @@ const StruggleSolution = () => {
                             "Scam agents list fake or non-existent homes just to collect fees.",
                             "Multiple agents inflate prices with layered commissions.",
                             "Same property posted many times with conflicting info.",
-                            "Upfront fees for places that don’t even exist.",
+                            "Upfront fees for places that don&apos;t even exist.",
                             'Hidden agent layers: "2nd agent", "3rd agent" – more cost.',
                             'Too expensive extortion fee called inspection fee.'
                         ].map((item, index) => (
@@ -71,7 +71,7 @@ const StruggleSolution = () => {
                     </div>
 
                     <p className="text-sm italic text-gray-500 mt-2">
-                        It's chaotic, expensive, and unfair — especially for those urgently seeking shelter.
+                        It&apos;s chaotic, expensive, and unfair — especially for those urgently seeking shelter.
                     </p>
                 </motion.div>
 

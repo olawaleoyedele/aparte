@@ -153,30 +153,30 @@ export default function AgentLogin() {
                     {/* Alternate action */}
                     <div className="text-center mt-6 text-sm text-gray-600">
                         Are you an agent?{' '}
-                        <a href="/register/agent" className="text-orange-500 hover:underline">
+                        <Link href="/register/agent" className="text-orange-500 hover:underline">
                             Sign up
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Footer links */}
                     <div className="mt-4 text-xs text-gray-500 text-center space-x-2">
-                        <a
+                        <Link
                             href="https://pro.realtor.com/idp/forgot-email"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hover:underline"
                         >
                             Forgot your email?
-                        </a>
+                        </Link>
                         <span>|</span>
-                        <a
+                        <Link
                             href="https://support.realtor.com/s/login-help"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hover:underline"
                         >
                             Visit support center
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
