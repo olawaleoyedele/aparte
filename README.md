@@ -1,8 +1,6 @@
-# Aparte – Verified Housing App 🇳🇬
+# Aparte – Verified Housing App
 
 **Aparte** is a fullstack housing platform built with **Next.js** and **MongoDB** that helps Nigerians avoid rental fraud by verifying agents, detecting duplicate listings using AI, offering escrow for inspection fees, and enabling role-based onboarding for tenants, agents, and admins.
-
-> 🛡️ Language shouldn't be a barrier to trust in housing. Aparte bridges the gap.
 
 ---
 
