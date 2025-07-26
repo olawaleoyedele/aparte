@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Oswald } from 'next/font/google';
-import { UserIcon } from 'lucide-react';
+import { UserIcon, Menu, X } from 'lucide-react';
 import { destroyCookie } from 'nookies';
 import { useRouter } from 'next/navigation';
 
@@ -13,20 +13,32 @@ const oswald = Oswald({
 
 const Header = ({ onLoginClick, user }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const dropdownRef = useRef(null);
   const router = useRouter();
 
-  const handleLogout = () => {
-  destroyCookie(null, 'auth_token'); // replace 'auth_token' with your actual cookie key
-  router.push('/');
-  router.refresh(); // Refresh Next.js router (optional but useful)
+ const handleLogout = async () => {
+  try {
+    const res = await fetch('/api/logout');
+    if (res.ok) {
+      router.replace('/');
+      window.location.reload(); // ensures fresh state after logout
+    } else {
+      console.error('Logout failed.');
+    }
+  } catch (err) {
+    console.error('Logout error:', err);
+  }
 };
 
 
   // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
         setMenuOpen(false);
       }
     };
@@ -34,27 +46,28 @@ const Header = ({ onLoginClick, user }) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const navLinks = ['Renters', 'Home Owners', 'Help Me Find', 'Locations'];
+
   return (
     <header className={`${oswald.className} w-full relative bg-white`}>
-      <div className="flex justify-between items-center px-6 py-3 relative max-w-7xl mx-auto">
-        {/* Logo */}
-        <div className="flex-shrink-0">
-          <img src="/aparte-logo.png" alt="Logo" className="h-12 w-25 ml-[-15px]" />
+      <div className="flex justify-between items-center px-6 py-7 relative max-w-7xl mx-auto">
+        {/* Mobile: Hamburger Left */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setMobileNavOpen(!mobileNavOpen)}
+            className="text-gray-700 focus:outline-none z-50"
+          >
+            {mobileNavOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
 
-        {/* Nav Center */}
-        <nav className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-6 text-lg font-semibold text-gray-800">
-          {['Renters', 'Home Owners', 'Help Me Find', 'Locations'].map((item) => (
-            <button key={item} className="group relative">
-              <span className="transition duration-300 group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-pink-500 group-hover:bg-clip-text group-hover:text-transparent">
-                {item}
-              </span>
-            </button>
-          ))}
-        </nav>
+        {/* Logo: Centered on Mobile, Left on Desktop */}
+        <div className="flex-shrink-0 absolute left-1/2 transform -translate-x-1/2 md:static md:translate-x-0">
+          <img src="/aparte-logo.png" alt="Logo" className="h-12 w-25" />
+        </div>
 
-        {/* Right Side */}
-        <div className="text-base text-gray-700 relative" ref={dropdownRef}>
+        {/* Right Side (Account/Login) */}
+        <div className="text-base text-gray-700 relative z-50" ref={dropdownRef}>
           {user ? (
             <div className="relative">
               <button
@@ -99,6 +112,34 @@ const Header = ({ onLoginClick, user }) => {
           )}
         </div>
       </div>
+
+      {/* Desktop Center Nav */}
+      <nav className="hidden md:flex gap-6 text-lg font-semibold text-gray-800 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        {navLinks.map((item) => (
+          <button key={item} className="group relative">
+            <span className="transition duration-300 group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-pink-500 group-hover:bg-clip-text group-hover:text-transparent">
+              {item}
+            </span>
+          </button>
+        ))}
+      </nav>
+
+      {/* Mobile Nav Dropdown */}
+      {mobileNavOpen && (
+        <div className="md:hidden px-6 pb-4">
+          <nav className="flex flex-col gap-4 text-lg font-semibold text-gray-800">
+            {navLinks.map((item) => (
+              <button
+                key={item}
+                className="text-left hover:text-orange-500"
+                onClick={() => setMobileNavOpen(false)}
+              >
+                {item}
+              </button>
+            ))}
+          </nav>
+        </div>
+      )}
 
       {/* Gradient bar */}
       <div className="h-1 w-full bg-gradient-to-r from-orange-400 to-pink-500"></div>
