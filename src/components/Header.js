@@ -17,12 +17,19 @@ const Header = ({ onLoginClick, user }) => {
   const dropdownRef = useRef(null);
   const router = useRouter();
 
- const handleLogout = async () => {
+const handleLogout = async () => {
   try {
-    const res = await fetch('/api/logout');
+    // Send the logout request, ensuring cookies are sent
+    const res = await fetch('/api/logout', {
+      method: 'POST',  // Ensure it's a POST request for logout
+      credentials: 'include',  // Include cookies for logout
+    });
+
     if (res.ok) {
+      // Redirect to the home page (or login page, depending on your flow)
       router.replace('/');
-      window.location.reload(); // ensures fresh state after logout
+      // Optionally reload the page to reset the state
+      window.location.reload(); 
     } else {
       console.error('Logout failed.');
     }
@@ -30,6 +37,7 @@ const Header = ({ onLoginClick, user }) => {
     console.error('Logout error:', err);
   }
 };
+
 
 
   // Close dropdown on outside click
@@ -50,7 +58,7 @@ const Header = ({ onLoginClick, user }) => {
 
   return (
     <header className={`${oswald.className} w-full relative bg-white`}>
-      <div className="flex justify-between items-center px-6 py-5 relative max-w-7xl mx-auto">
+      <div className="flex justify-between items-center px-6 py-4 relative max-w-7xl mx-auto">
         {/* Mobile: Hamburger Left */}
         <div className="md:hidden">
           <button
