@@ -50,7 +50,7 @@ const Header = ({ onLoginClick, user }) => {
 
   return (
     <header className={`${oswald.className} w-full relative bg-white`}>
-      <div className="flex justify-between items-center px-6 py-7 relative max-w-7xl mx-auto">
+      <div className="flex justify-between items-center px-6 py-5 relative max-w-7xl mx-auto">
         {/* Mobile: Hamburger Left */}
         <div className="md:hidden">
           <button
@@ -107,7 +107,7 @@ const Header = ({ onLoginClick, user }) => {
               className="hover:underline cursor-pointer bg-transparent border-none p-0"
               type="button"
             >
-              Login / Register
+              Login
             </button>
           )}
         </div>
