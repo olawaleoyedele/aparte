@@ -474,9 +474,9 @@ const ListingSection = () => {
                 <div className="text-center mt-8">
                     <button
                         onClick={() => setVisibleCount((prev) => prev + 6)}
-                        className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded font-medium"
+                        className="bg-gradient-to-r from-orange-400 to-pink-500 hover:bg-gray-800 text-white px-6 py-2 rounded font-medium"
                     >
-                        Load More
+                        Load More...
                     </button>
                 </div>
             )}
