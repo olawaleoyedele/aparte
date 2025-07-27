@@ -36,25 +36,35 @@ const StruggleSolution = () => {
             {/* Problem Section */}
             <div ref={problemRef} className="grid md:grid-cols-2 items-center mb-5">
 
-                {/* Text on the Left */}
+                {/* Sad Woman Image - visible only on small screens */}
+                <motion.div
+                    variants={fadeUp}
+                    initial="hidden"
+                    animate={problemInView ? 'visible' : 'hidden'}
+                    className="flex justify-center md:hidden mb-6"
+                >
+                    <Image
+                        src={sadWoman}
+                        alt="Frustrated renter"
+                        width={150}
+                        height={150}
+                        className="rounded-xl"
+                    />
+                </motion.div>
+
+                {/* Text on the Left (or full width on mobile) */}
                 <motion.div
                     variants={fadeUp}
                     initial="hidden"
                     animate={problemInView ? 'visible' : 'hidden'}
                     className="space-y-4 text-gray-700"
                 >
-                    {/* <h3 className="text-3xl font-semibold text-black">
-            The{' '}
-            <span className="bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">
-                Problem{' '}
-            </span>
-        </h3> */}
                     <div className="grid gap-4 md:grid-cols-2">
                         {[
                             "Scam agents list fake or non-existent homes just to collect fees.",
                             "Multiple agents inflate prices with layered commissions.",
                             "Same property posted many times with conflicting info.",
-                            "Upfront fees for places that don&apos;t even exist.",
+                            "Upfront fees for places that don't even exist.",
                             'Hidden agent layers: "2nd agent", "3rd agent" – more cost.',
                             'Too expensive extortion fee called inspection fee.'
                         ].map((item, index) => (
@@ -71,31 +81,32 @@ const StruggleSolution = () => {
                     </div>
 
                     <p className="text-sm italic text-gray-500 mt-2">
-                        It&apos;s chaotic, expensive, and unfair — especially for those urgently seeking shelter.
+                        It's chaotic, expensive, and unfair — especially for those urgently seeking shelter.
                     </p>
                 </motion.div>
 
-                {/* Image on the Right */}
+                {/* Sad Woman Image - visible only on md+ screens */}
                 <motion.div
                     variants={fadeUp}
                     initial="hidden"
                     animate={problemInView ? 'visible' : 'hidden'}
                     transition={{ delay: 0.2 }}
-                    className="flex justify-center"
+                    className="hidden md:flex justify-center"
                 >
                     <Image
                         src={sadWoman}
                         alt="Frustrated renter"
-                        width={150}
-                        height={150}
+                        width={180}
+                        height={180}
                         className="rounded-xl"
                     />
                 </motion.div>
             </div>
 
 
+
             {/* Solution Section */}
-            <div ref={solutionRef} className="grid md:grid-cols-2 gap-16 items-center">
+            <div ref={solutionRef} className="grid md:grid-cols-2 gap-6 items-center">
                 {/* Image */}
                 <motion.div
                     variants={fadeUp}
@@ -104,13 +115,27 @@ const StruggleSolution = () => {
                     transition={{ delay: 0.2 }}
                     className="flex justify-center"
                 >
-                    <Image
-                        src={pointingMan}
-                        alt="Confident solution expert"
-                        width={200}
-                        height={200}
-                        className="rounded-xl"
-                    />
+                    {/* Mobile Image (pointing down) */}
+                    <div className="md:hidden flex justify-center">
+                        <Image
+                            src="/pointing-down.png" // Replace with your actual mobile image path
+                            alt="Pointing down"
+                            width={160}
+                            height={160}
+                            className="rounded-xl"
+                        />
+                    </div>
+
+                    {/* Desktop Image (pointing right) */}
+                    <div className="hidden md:flex justify-center">
+                        <Image
+                            src={pointingMan}
+                            alt="Pointing right"
+                            width={200}
+                            height={200}
+                            className="rounded-xl"
+                        />
+                    </div>
                 </motion.div>
 
                 {/* Text */}
