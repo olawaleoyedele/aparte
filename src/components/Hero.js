@@ -260,14 +260,14 @@ const Hero = () => {
                                     </span>
                                 </h1>
                                 <p className="text-lg text-white/90 mb-6">
-                                    Nigeria’s first AI-powered housing app that protects tenants and rewards honest agents.
+                                    Nigeria&apos;s first AI-powered housing app that protects tenants and rewards honest agents.
                                 </p>
 
                                 <div className="flex flex-col sm:flex-row gap-2">
                                     <input
                                         type="text"
                                         placeholder="Where are you moving to?"
-                                        className="border border-white placeholder-white text-white bg-transparent px-2 py-2 rounded max-h-[50px] w-auto min-w-[210px]"
+                                        className="border border-white placeholder-white text-white bg-transparent px-2 py-2 rounded max-h-[50px] w-auto max-w-[210px]"
                                     />
 
                                     <select className="border border-white text-white bg-transparent px-2 py-2 rounded max-h-[50px] w-auto max-w-[165px] appearance-none">
