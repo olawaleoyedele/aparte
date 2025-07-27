@@ -106,7 +106,7 @@ const StruggleSolution = () => {
 
 
             {/* Solution Section */}
-            <div ref={solutionRef} className="grid md:grid-cols-2 gap-6 items-center">
+            <div ref={solutionRef} className="grid md:grid-cols-2 gap-6 mt-12 items-center">
                 {/* Image */}
                 <motion.div
                     variants={fadeUp}
