@@ -54,7 +54,7 @@ export default function Sidebar({ onLinkClick }) {
           })}
         </nav>
 
-        <div className="mt-65 text-xs text-gray-400 px-0">
+        <div className="mt-65 text-xs text-gray-400 px-0 hidden md:block">
           © {new Date().getFullYear()} Aparte. All rights reserved.
         </div>
       </aside>
